@@ -53,10 +53,10 @@ module Enumerable
         end
     end
 
-    def my_map?
+    def my_map?(&proc)
         res = []
-        self.my_each do |ex|
-        end
+        self.my_each {|ex| res << yield(ex)}
+        res
     end
 
     def my_inject?(accumulator, &block)
@@ -72,44 +72,6 @@ module Enumerable
 
 end
 
-arr = ['cat ', 'dog ', 'pig ', 'goat ', "hen "]
-nums = [1, 2, 3, 4, 5]
-ints = [2, 4, 6, 8, 9]
-
-# test for my_each function
-arr.my_each do |a|
-    puts "#{a}"
-end
-
-# # # # test for my_each_with_index function
-arr.my_each_with_index do |animal, idx|
-    puts animal if idx % 2 == 0
- end
-
-# # #  test for my_select function
-nums.my_select do |ex|
-    puts "#{ex}" 
-end
-
-# # test if all return true or false
-puts arr.my_all? { |ex| ex == 'dog' }
-
-# # test if any return true or false
-puts arr.my_any? { |ex| ex == 'cat' }
-
-# # # test if none return true or false
-puts arr.my_none? {|ex| ex =='dog'}
-
-# # # test if count returns number of items in an array
-puts ints.my_count?
-
-# # # test map
-puts nums.my_map? { |n| n.even? }
-
-# # test my_inject
-puts nums.my_inject?(1) { |result, element| result + element }
-
-# test multiply_els
 
 
 
