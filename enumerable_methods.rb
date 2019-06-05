@@ -72,6 +72,10 @@ module Enumerable
 
 end
 
+# arr = ["aa", "bb", "cc", "dd", "ee"]
+# # arr.my_each do |a|
+# #     puts "#{a}"
+# # end
 
 
 
